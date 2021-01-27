@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace DataLayer
 {
-    public class Class1
+    public class Making
     {
+        public Brewery Brewery { get; set; }
+        public Beer Beer { get; set; }
+        public int Year { get; set; }
     }
 }
