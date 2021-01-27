@@ -27,14 +27,40 @@ namespace VitaminB
             lbUser.Text = currentUser.username;
             ShowBeer("");
             ShowPubs("");
+            LoadLikedBeers();
+            LoadLikedPubs();
         }
         private void LoadLikedBeers()
         {
             //ucitaj lajkovana piva
+            if (lbLikedBeers.Items.Count > 0)
+                lbLikedBeers.Items.Clear();
+            Dictionary<string, object> queryDict = new Dictionary<string, object>();
+            queryDict.Add("username", currentUser.username);
+
+            var query = new Neo4jClient.Cypher.CypherQuery("match (u:User)-[r:LIKED]->(b:Beer) where u.username = {username} return b",
+                                                            queryDict, CypherResultMode.Set);
+
+            List<Beer> likedBeer = ((IRawGraphClient)client).ExecuteGetCypherResults<Beer>(query).ToList();
+
+            foreach (Beer b in likedBeer)
+                lbLikedBeers.Items.Add(b.name);
         }
         private void LoadLikedPubs()
         {
             //ucitaj lajkovane pubove
+            if (lbLikedPubs.Items.Count > 0)
+                lbLikedPubs.Items.Clear();
+            Dictionary<string, object> queryDict = new Dictionary<string, object>();
+            queryDict.Add("username", currentUser.username);
+
+            var query = new Neo4jClient.Cypher.CypherQuery("match (u:User)-[r:LIKED]->(p:Pub) where u.username = {username} return p",
+                                                            queryDict, CypherResultMode.Set);
+
+            List<Pub> likedPubs = ((IRawGraphClient)client).ExecuteGetCypherResults<Pub>(query).ToList();
+
+            foreach (Pub b in likedPubs)
+                lbLikedPubs.Items.Add(b.name);
         }
         private void ShowBeer(string name)
         {
@@ -61,9 +87,7 @@ namespace VitaminB
                 beerList = ((IRawGraphClient)client).ExecuteGetCypherResults<Beer>(query).OrderBy(a => a.name).ToList();
             }
             foreach(Beer beer in beerList)
-            {
                 lbBeers.Items.Add(beer.name);
-            }
         }
         private void ShowPubs(string name)
         {
@@ -90,9 +114,7 @@ namespace VitaminB
                 pubList = ((IRawGraphClient)client).ExecuteGetCypherResults<Pub>(query).OrderBy(a => a.name).ToList();
             }
             foreach (Pub pub in pubList)
-            {
                 lbPubs.Items.Add(pub.name);
-            }
         }
 
         private void btnSearchPub_Click(object sender, EventArgs e)
