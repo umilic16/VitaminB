@@ -20,7 +20,6 @@ namespace VitaminB
             InitializeComponent();
         }
         private GraphClient client;
-        private User currentUser;
         private void Form1_Load(object sender, EventArgs e)
         {
             client = new GraphClient(new Uri("http://localhost:7474/db/data"), "neo4j", "edukacija");
@@ -89,12 +88,16 @@ namespace VitaminB
             var query = new Neo4jClient.Cypher.CypherQuery("match (n:User {username: {username}, password: {password}}) return n",
                                    queryDict, CypherResultMode.Set);
 
-            currentUser = ((IRawGraphClient)client).ExecuteGetCypherResults<User>(query).FirstOrDefault();
+            User currentUser = ((IRawGraphClient)client).ExecuteGetCypherResults<User>(query).FirstOrDefault();
             //string broj = "Ima ih " + count + ".";
             //tbLogPass.Text = broj;
             if (currentUser!=null)
             {
                 MessageBox.Show("You are now logged in");
+                Form2 forma = new Form2();
+                forma.client = client;
+                forma.currentUser = currentUser;
+                forma.ShowDialog();
             }
             else
             {

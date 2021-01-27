@@ -8,8 +8,8 @@ namespace DataLayer
 {
     public class Rating
     {
-        public User User { get; set; }
-        public object BeerOrPub { get; set; }
-        public int Stars { get; set; }
+        public User user { get; set; }
+        public object beerOrPub { get; set; }
+        public int stars { get; set; }
     }
 }

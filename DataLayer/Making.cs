@@ -8,8 +8,8 @@ namespace DataLayer
 {
     public class Making
     {
-        public Brewery Brewery { get; set; }
-        public Beer Beer { get; set; }
-        public int Year { get; set; }
+        public Brewery brewery { get; set; }
+        public Beer beer { get; set; }
+        public int year { get; set; }
     }
 }

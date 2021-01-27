@@ -8,8 +8,8 @@ namespace DataLayer
 {
     public class Country
     {
-        public String Name { get; set; }
-        public List<Pub> Pubs { get; set; }
-        public List<Brewery> Breweries { get; set; }
+        public String name { get; set; }
+        public List<Pub> pubs { get; set; }
+        public List<Brewery> breweries { get; set; }
     }
 }

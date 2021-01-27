@@ -8,9 +8,9 @@ namespace DataLayer
 {
     public class Brewery
     {
-        public String Name { get; set; }
-        public String Address { get; set; }
-        public String Phone { get; set; }
-        public List<Making> Beers { get; set; }
+        public String name { get; set; }
+        public String address { get; set; }
+        public String phone { get; set; }
+        public List<Making> beers { get; set; }
     }
 }

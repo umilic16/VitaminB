@@ -8,7 +8,7 @@ namespace DataLayer
 {
     public class Beer
     {
-        public String Name { get; set; }
-        public String Abv { get; set; }
+        public String name { get; set; }
+        public String abv { get; set; }
     }
 }

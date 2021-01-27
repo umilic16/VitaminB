@@ -8,7 +8,7 @@ namespace DataLayer
 {
     public class Type
     {
-        public String Name { get; set; }
-        public List<Subtype> SubTypes { get; set; }
+        public String name { get; set; }
+        public List<Subtype> subTypes { get; set; }
     }
 }

@@ -8,6 +8,6 @@ namespace DataLayer
 {
     public class Subtype
     {
-        public String Name { get; set; }
+        public String name { get; set; }
     }
 }

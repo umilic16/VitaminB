@@ -8,8 +8,8 @@ namespace DataLayer
 {
     public class Selling
     {
-        public Pub Pub { get; set; }
-        public Beer Beer { get; set; }
-        public String Price { get; set; }
+        public Pub pub { get; set; }
+        public Beer beer { get; set; }
+        public String price { get; set; }
     }
 }

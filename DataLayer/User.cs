@@ -8,11 +8,11 @@ namespace DataLayer
 {
     public class User
     {
-        public String Username { get; set; }
-        public String Password { get; set; }
-        public List<Rating> RatedBeers { get; set; }
-        public List<Rating> RatedPubs { get; set; }
-        public List<Beer> LikedBeers { get; set; }
-        public List<Pub> LikedPubs { get; set; }
+        public String username { get; set; }
+        public String password { get; set; }
+        public List<Rating> ratedBeers { get; set; }
+        public List<Rating> ratedPubs { get; set; }
+        public List<Beer> likedBeers { get; set; }
+        public List<Pub> likedPubs { get; set; }
     }
 }
