@@ -278,12 +278,11 @@ namespace VitaminB
             queryDict.Add("userName", currentUser.username);
             queryDict.Add("pubName", lbLikedPubs.SelectedItem.ToString());
             //obrisi vezu
-            var query = new Neo4jClient.Cypher.CypherQuery("match (u:User)-[r:LIKED]->(p:Pub) where u.username = {userName} and b.name = {pubName} delete r",
+            var query = new Neo4jClient.Cypher.CypherQuery("match (u:User)-[r:LIKED]->(p:Pub) where u.username = {userName} and p.name = {pubName} delete r",
                                                             queryDict, CypherResultMode.Set);
             ((IRawGraphClient)client).ExecuteCypher(query);
             //refresh listu
             LoadLikedPubs();
         }
-    }
     }
 }
