@@ -66,6 +66,9 @@ namespace VitaminB
                        queryDict, CypherResultMode.Set);
                 ((IRawGraphClient)client).ExecuteCypher(create);
                 MessageBox.Show("User created");
+                tbSignPass.Text = "";
+                tbSignRepPass.Text = "";
+                tbSignUser.Text = "";
             }
             else
             {
@@ -93,16 +96,15 @@ namespace VitaminB
             //tbLogPass.Text = broj;
             if (currentUser!=null)
             {
-                MessageBox.Show("You are now logged in");
+                tbLogUser.Text = "";
+                tbLogPass.Text = "";
                 Form2 forma = new Form2();
                 forma.client = client;
                 forma.currentUser = currentUser;
                 forma.ShowDialog();
             }
             else
-            {
                 lbLoginError.Visible = true;
-            }
         }
     }
 }
